@@ -19,15 +19,14 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log(data);
         this.formTarget.outerHTML = data.form;
         if (data.inserted_item) {
           this.itemsTarget.insertAdjacentHTML('beforeend', data.inserted_item)
+          this.firstTarget.outerHTML = ""
         }
         if (data.number_of_reviews) {
           this.sizeTarget.outerHTML = data.number_of_reviews;
-        }
-        if (data.first_comment) {
-          this.firstTarget.outerHTML = data.first_comment
         }
       });
   }
